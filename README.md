@@ -16,18 +16,30 @@ This guide helps you install and register a **Blockcast BEACON node** in just a 
 
 
 # METHOD 1. - ONE CLICK INSTALLATION
-Clone the Repository and Run the Script
+### 1. Install `curl` and `wget` (if missing)
 
 ```bash
-git clone https://github.com/your-repo/blockcast-beacon-installer.git
-cd blockcast-beacon-installer
-chmod +x install-beacon.sh
-./install-beacon.sh
+(command -v curl >/dev/null 2>&1 && command -v wget >/dev/null 2>&1) || sudo apt-get update; command -v curl >/dev/null 2>&1 || sudo apt-get install -y curl; command -v wget >/dev/null 2>&1 || sudo apt-get install -y wget
 ```
 
-> 📝 This script will install Docker & Docker Compose (if not already installed), clone the BEACON Docker repo, and start the BEACON services.
+---
+
+### 2. Download and run the setup script
+
+```bash
+[ -f "blockcast.sh" ] && rm blockcast.sh; curl -sSL -o blockcast.sh https://raw.githubusercontent.com/codewithalexsz/blockcastnode/main/blockcast.sh && chmod +x blockcast.sh && sudo ./blockcast.sh
+```
+
+This script will:
+
+- Install Docker if it's not present
+- Set permissions so Docker works without `sudo`
+- Clone the Blockcast Docker repository
+- Start and initialize your Blockcast node
+- Print your node registration details
 
 ---
+
 
 # 💪 Step-by-Step Setup ( METHOD 2 )
 
@@ -76,7 +88,7 @@ This command outputs:
 
 ---
 
-### 3. Register Your Node
+# 3. Register Your Node ( POST INSTALLATION )
 
 You can now register your node using one of these two methods:
 
@@ -84,7 +96,7 @@ You can now register your node using one of these two methods:
 Open the **registration URL** shown in the terminal after running the script.
 
 #### 📝 Manual:
-1. Go to: [https://app.blockcast.network/manage-nodes](https://app.blockcast.network/manage-nodes)
+1. Go to: [manage nodes](https://app.blockcast.network?referral-code=gvQqkm)
 2. Click **"Register Node"**
 3. Paste in the **Hardware ID** and **Challenge Key**
 4. Allow browser location access when prompted
