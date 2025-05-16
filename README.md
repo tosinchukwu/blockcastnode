@@ -43,9 +43,8 @@ This script will:
 
 # 💪 Step-by-Step Setup ( METHOD 2 )
 
-## 🔧 Docker Installation
-
-Run the following code line by line to install Docker:
+## a.🔧 Docker Installation
+ Run the following code line by line to install Docker:
 
 ```bash
 sudo apt update -y && sudo apt upgrade -y
@@ -73,14 +72,15 @@ sudo usermod -aG docker $USER
 
 ---
 
-### 2. Wait for Initialization
-
-The script will wait briefly for the container to initialize, then automatically run:
+### b. install blockcast node
 
 ```bash
+git clone https://github.com/Blockcast/beacon-docker-compose.git && cd beacon-docker-compose && docker compose up -d
+```
+### c. When BEACON runtime is up, run below code
+```
 docker compose exec blockcastd blockcastd init
 ```
-
 This command outputs:
 - 🔑 **Hardware ID**
 - 🔐 **Challenge Key**
