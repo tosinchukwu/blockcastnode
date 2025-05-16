@@ -46,7 +46,7 @@ fi
 # Clone Blockcast Docker repo
 echo -e "${CYAN}${BOLD}---- CLONING BLOCKCAST DOCKER REPOSITORY ----${RESET}"
 if [ ! -d "blockcast" ]; then
-    git clone https://github.com/BlockcastNetwork/blockcast-docker.git blockcast
+    git clone https://github.com/Blockcast/beacon-docker-compose.git blockcast
     cd blockcast || exit 1
 else
     echo -e "${LIGHTBLUE}Directory 'blockcast' already exists. Skipping clone.${RESET}"
