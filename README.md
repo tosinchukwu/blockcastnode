@@ -13,9 +13,10 @@ This guide helps you install and register a **Blockcast BEACON node** in just a 
 
 ---
 
-## 💪 Step-by-Step Setup
 
-### 1. Clone the Repository and Run the Script
+
+# METHOD 1. - ONE CLICK INSTALLATION
+Clone the Repository and Run the Script
 
 ```bash
 git clone https://github.com/your-repo/blockcast-beacon-installer.git
@@ -28,12 +29,44 @@ chmod +x install-beacon.sh
 
 ---
 
+# 💪 Step-by-Step Setup ( METHOD 2 )
+
+## 🔧 Docker Installation
+
+Run the following code line by line to install Docker:
+
+```bash
+sudo apt update -y && sudo apt upgrade -y
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=\"$(dpkg --print-architecture)\" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  \"$(. /etc/os-release && echo \"$VERSION_CODENAME\")\" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update -y && sudo apt upgrade -y
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo systemctl enable docker
+sudo systemctl restart docker
+sudo usermod -aG docker $USER
+```
+
+---
+
 ### 2. Wait for Initialization
 
 The script will wait briefly for the container to initialize, then automatically run:
 
 ```bash
-docker-compose exec blockcastd blockcastd init
+docker compose exec blockcastd blockcastd init
 ```
 
 This command outputs:
