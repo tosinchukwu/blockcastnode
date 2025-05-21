@@ -96,7 +96,7 @@ You can now register your node using one of these two methods:
 Open the **registration URL** shown in the terminal after running the script.
 
 #### 📝 Manual:
-1. Go to: [manage nodes](https://app.blockcast.network?referral-code=gvQqkm)
+1. Go to: [manage nodes](https://app.blockcast.network?referral-code=opXDeB))
 2. Click **"Register Node"**
 3. Paste in the **Hardware ID** and **Challenge Key**
 4. Allow browser location access when prompted
